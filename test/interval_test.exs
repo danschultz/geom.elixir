@@ -20,6 +20,10 @@ defmodule IntervalTest do
     assert interval.min == 5 and interval.max == 10
   end
 
+  test "center of interval is half way between min and max" do
+    assert Interval.new(2, 4) |> Interval.center == 3
+  end
+
   test "interval with max larger than min is not empty" do
     assert Interval.new(5, 10) |> Interval.is_empty? == false
   end

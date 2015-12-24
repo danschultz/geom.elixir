@@ -1,6 +1,6 @@
 defmodule Geom.Point do
   alias __MODULE__
-  
+
   defstruct x: 0, y: 0
 
   def new do
