@@ -21,8 +21,16 @@ defmodule Geom.Rect do
     |> Enum.reduce(&union(&1, &2))
   end
 
-  def center(%Rect{} = rect) do
-    %Point{x: Interval.center(rect.x), y: Interval.center(rect.y)}
+  def top_left(%Rect{x: x, y: y}) do
+    %Point{x: x.min, y: y.min}
+  end
+
+  def bottom_right(%Rect{x: x, y: y}) do
+    %Point{x: x.max, y: y.max}
+  end
+
+  def center(%Rect{x: x, y: y}) do
+    %Point{x: Interval.center(x), y: Interval.center(y)}
   end
 
   def intersection(%Rect{} = a, %Rect{} = b) do

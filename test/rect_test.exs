@@ -14,6 +14,16 @@ defmodule RectTest do
     assert rect == Rect.new Interval.new(-10, 5), Interval.new(-5, 10)
   end
 
+  test "top_left/1 is the top left corner" do
+    rect = Rect.new Interval.new(10, 20), Interval.new(20, 30)
+    assert rect |> Rect.top_left == Point.new(10, 20)
+  end
+
+  test "bottom_right/1 is the top left corner" do
+    rect = Rect.new Interval.new(10, 20), Interval.new(20, 30)
+    assert rect |> Rect.bottom_right == Point.new(20, 30)
+  end
+
   test "center/1 is top left point plus half dimensions" do
     rect = Rect.new Interval.new(10, 20), Interval.new(10, 20)
     assert rect |> Rect.center == Point.new(15, 15)
