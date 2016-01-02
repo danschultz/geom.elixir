@@ -13,6 +13,14 @@ defmodule Geom.Rect do
     %Rect{x: x, y: y}
   end
 
+  def from_points(points) do
+    points
+    |> Enum.map(fn point -> %Rect{
+      x: %Interval{min: point.x, max: point.x},
+      y: %Interval{min: point.y, max: point.y}} end)
+    |> Enum.reduce(&union(&1, &2))
+  end
+
   def center(%Rect{} = rect) do
     %Point{x: Interval.center(rect.x), y: Interval.center(rect.y)}
   end
